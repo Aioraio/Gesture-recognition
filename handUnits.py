@@ -32,3 +32,25 @@ class HandDetector():
                         position[label][id] = (x, y)
                 i = i + 1
         return position
+
+    def get_lms(self, img, direction):
+        lms = []
+        position = self.find_position(img)
+        if any(position[direction]):
+            for i in range(21):
+                pos_x = position[direction].get(i)[0]
+                pos_y = position[direction].get(i)[1]
+                lms.append([int(pos_x), int(pos_y)])
+        return lms
+
+    def get_seq(self,name):
+        seq = []
+        if name == "tips":
+            seq = [4, 8, 12, 16, 20]
+        elif name == "roots":
+            seq = [3, 5, 9, 13, 17]
+        
+        return seq
+        
+
+    
